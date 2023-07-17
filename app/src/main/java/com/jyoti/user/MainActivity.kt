@@ -3,41 +3,40 @@ package com.jyoti.user
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.jyoti.user.ui.theme.MyApplicationTheme
+import com.jyoti.core.network.NetworkMonitor
+import com.jyoti.core.network.NoOpsNetworkMonitor
+import com.jyoti.designsystem.theme.MyApplicationTheme
+import com.jyoti.user.ui.UserApp
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var networkMonitor: NetworkMonitor
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
+                UserApp(
+                    networkMonitor = networkMonitor,
+                )
             }
         }
     }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
-        Greeting("Android")
+        UserApp(
+            networkMonitor = NoOpsNetworkMonitor(),
+        )
     }
 }

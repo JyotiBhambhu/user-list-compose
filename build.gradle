@@ -1,6 +1,26 @@
 buildscript {
-    ext {
-        compose_ui_version = '1.2.0'
+    ext.versions = [
+            appcompat         : '1.6.1',
+
+            composeCompiler   : "1.4.7",
+            compose_ui_version: "1.5.0-beta02",
+            material3Compose  : "1.1.0-beta02",
+            composeNav        : "2.6.0",
+
+            daggerHiltAndroid : "2.44.2",
+            daggerHilt        : "1.0.0",
+    ]
+    ext.config = [
+            minSdkVersion    : 24,
+            compileSdkVersion: 33,
+            versionCode      : 1,
+            versionName      : '1.0.0',
+            appId            : "com.jyoti.user",
+            appName          : "user-list",
+    ]
+    dependencies {
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$versions.daggerHiltAndroid"
+        classpath "com.android.tools.build:gradle:7.4.0"
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
