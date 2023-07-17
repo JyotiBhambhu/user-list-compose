@@ -13,8 +13,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.jyoti.core.network.NetworkMonitor
-import com.jyoti.user.contacts.navigation.contactsNavigationRoute
-import com.jyoti.user.contacts.navigation.navigateToContactsGraph
+import com.jyoti.user.contacts.contactlist.navigation.contactsNavigationRoute
+import com.jyoti.user.contacts.contactlist.navigation.navigateToContactsGraph
 import com.jyoti.user.navigation.TopLevelDestination
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted

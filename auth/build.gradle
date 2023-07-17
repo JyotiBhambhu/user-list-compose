@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace 'com.jyoti.auth'
-    compileSdk 33
+    compileSdk config.compileSdkVersion
 
     defaultConfig {
-        minSdk 24
-        targetSdk 33
+        minSdk config.minSdkVersion
+        targetSdk config.compileSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -28,8 +28,24 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11
     }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion versions.composeCompiler
+    }
 }
 
 dependencies {
+
+    //Compose
+    implementation "androidx.compose.material3:material3:$versions.material3Compose"
+
+    //Compose Navigation
+    implementation "androidx.navigation:navigation-compose:$versions.composeNav"
+
+    //Preview
+    implementation "androidx.compose.ui:ui-tooling:$versions.compose_ui_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$versions.compose_ui_version"
 
 }

@@ -73,6 +73,9 @@ fun UserApp(
                 }
                 UserAppNavHost(
                     navController = appState.navController,
+                    showSnackBar = { message, duration ->
+                        appState.showSnackbar(message, duration)
+                    }
                 )
             }
         }
