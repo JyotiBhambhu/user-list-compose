@@ -15,7 +15,6 @@ fun NavController.navigateToContactsGraph(navOptions: NavOptions? = null) {
 }
 
 fun NavGraphBuilder.contactsGraph(
-    onClickAddUser: () -> Unit,
     nestedGraphs: NavGraphBuilder.() -> Unit,
 ) {
     navigation(
@@ -23,7 +22,7 @@ fun NavGraphBuilder.contactsGraph(
         startDestination = contactsNavigationRoute,
     ) {
         composable(route = contactsNavigationRoute) {
-            ContactsRoute(onClickAddUser = onClickAddUser)
+            ContactsRoute()
         }
         nestedGraphs()
     }

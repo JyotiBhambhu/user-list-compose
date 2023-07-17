@@ -9,7 +9,7 @@ import com.jyoti.user.contacts.addcontact.ui.AddContactRoute
 
 const val addContactNavigationRoute = "add_contact_route"
 
-fun NavController.navigateToAddContactGraph(navOptions: NavOptions? = null) {
+fun NavController.navigateToAddContactScreen(navOptions: NavOptions? = null) {
     this.navigate(addContactNavigationRoute, navOptions)
 }
 

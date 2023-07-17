@@ -11,7 +11,6 @@ import com.jyoti.auth.login.navigation.loginScreen
 import com.jyoti.auth.signup.navigation.navigateToSignUp
 import com.jyoti.auth.signup.navigation.signUpScreen
 import com.jyoti.user.contacts.addcontact.navigation.addContactScreen
-import com.jyoti.user.contacts.addcontact.navigation.navigateToAddContactGraph
 import com.jyoti.user.contacts.contactlist.navigation.contactsGraph
 import com.jyoti.user.contacts.contactlist.navigation.navigateToContactsGraph
 
@@ -42,11 +41,8 @@ fun UserAppNavHost(
         signUpScreen(
             navigateUp = navController::popBackStack,
         )
-        contactsGraph(
-            onClickAddUser = navController::navigateToAddContactGraph,
-            nestedGraphs = {
-                addContactScreen(navigateUp = navController::popBackStack, showSnackBar)
-            }
-        )
+        contactsGraph {
+            addContactScreen(navigateUp = navController::popBackStack, showSnackBar)
+        }
     }
 }

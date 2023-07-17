@@ -23,11 +23,13 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import com.jyoti.core.network.NetworkMonitor
+import com.jyoti.designsystem.component.UserAppFAB
 import com.jyoti.designsystem.component.UserTopAppBar
 import com.jyoti.designsystem.icon.UserAppIcons
 import com.jyoti.user.navigation.UserAppNavHost
 
-@OptIn(ExperimentalComposeUiApi::class, ExperimentalLayoutApi::class,
+@OptIn(
+    ExperimentalComposeUiApi::class, ExperimentalLayoutApi::class,
     ExperimentalMaterial3Api::class
 )
 @Composable
@@ -36,12 +38,14 @@ fun UserApp(
     appState: UserAppState = rememberUserAppState(
         networkMonitor = networkMonitor,
     ),
-){
+) {
     com.jyoti.designsystem.theme.UserAppBackground {
 
         val activity = LocalView.current.context as Activity
         val backgroundArgb = com.jyoti.designsystem.theme.ColorPrimary.Base.id.toArgb()
         activity.window.statusBarColor = backgroundArgb
+
+        val destination = appState.currentTopLevelDestination
 
         Scaffold(
             modifier = Modifier.semantics {
@@ -51,6 +55,12 @@ fun UserApp(
             contentColor = MaterialTheme.colorScheme.onBackground,
             contentWindowInsets = WindowInsets(0, 0, 0, 0),
             snackbarHost = { SnackbarHost(appState.snackbarHostState) },
+            floatingActionButton = {
+                if (destination != null)
+                    UserAppFAB{
+                        appState.navigateToAddContact()
+                    }
+            }
         ) { padding ->
             Column(
                 Modifier
@@ -63,7 +73,6 @@ fun UserApp(
                         ),
                     ),
             ) {
-                val destination = appState.currentTopLevelDestination
                 if (destination != null) {
                     UserTopAppBar(
                         titleRes = destination.titleTextId,
