@@ -14,4 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "User List"
 include ':app'
-include ':app:core'
+include ':core'
+include ':user'
+include ':auth'
+include ':core:designsystem'
