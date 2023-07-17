@@ -6,17 +6,17 @@ import com.jyoti.core.util.Event
 import com.jyoti.core.util.toEvent
 
 data class LoginViewState(
-    val emailError: String?,
-    val passwordError: String?,
-    val loginError: String?,
+    val emailError: Boolean,
+    val passwordError: Boolean,
+    val loginError: String,
     val loadState: LoadState,
-    val navigateToHome: Event<Boolean>?,
+    val navigateToHome: Event<Boolean>,
 ) : State {
     companion object {
         val initial = LoginViewState(
-            emailError = null,
-            passwordError = null,
-            loginError = null,
+            emailError = false,
+            passwordError = false,
+            loginError = "",
             navigateToHome = false.toEvent(),
             loadState = LoadState.IDLE
         )

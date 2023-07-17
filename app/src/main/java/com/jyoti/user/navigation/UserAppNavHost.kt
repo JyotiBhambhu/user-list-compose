@@ -36,7 +36,8 @@ fun UserAppNavHost(
                     }
                 )
             },
-            onSignUpClicked = navController::navigateToSignUp
+            onSignUpClicked = navController::navigateToSignUp,
+            showSnackBar = showSnackBar
         )
         signUpScreen(
             navigateUp = navController::popBackStack,

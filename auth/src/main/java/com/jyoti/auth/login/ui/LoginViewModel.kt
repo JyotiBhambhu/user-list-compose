@@ -24,10 +24,6 @@ class LoginViewModel @Inject constructor(
 ) :
     MviViewModel<LoginViewState, LoginIntent, LoginReduceAction>(initialState = LoginViewState.initial) {
 
-    init {
-        loginUser("eve.holt@reqres.in", "cityslicka")
-    }
-
     private fun loginUser(
         email: String,
         password: String
@@ -47,11 +43,26 @@ class LoginViewModel @Inject constructor(
         }
     }
 
+    private fun isValidEmail(email: String): Boolean {
+        val emailRegex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex()
+        return email.matches(emailRegex)
+    }
+
+    private fun isValidPassword(password: String): Boolean {
+        return password.trim().length > 4
+    }
+
     override fun executeIntent(mviIntent: LoginIntent) {
         when (mviIntent) {
             is LoginIntent.DoLogin -> {
-                handle(LoginReduceAction.LoginStarted)
-                loginUser(mviIntent.email, mviIntent.password)
+
+                handle(LoginReduceAction.EmailError(!isValidEmail(mviIntent.email)))
+                handle(LoginReduceAction.PasswordError(!isValidPassword(mviIntent.password)))
+
+                if (isValidEmail(mviIntent.email) && isValidPassword(mviIntent.password)) {
+                    handle(LoginReduceAction.LoginStarted)
+                    loginUser(mviIntent.email, mviIntent.password)
+                }
             }
         }
     }
@@ -66,6 +77,12 @@ class LoginViewModel @Inject constructor(
             }
             is LoginReduceAction.LoginSuccess -> {
                 state.copy(loadState = LoadState.LOADED, navigateToHome = true.toEvent())
+            }
+            is LoginReduceAction.EmailError -> {
+                state.copy(emailError = reduceAction.isError)
+            }
+            is LoginReduceAction.PasswordError -> {
+                state.copy(passwordError = reduceAction.isError)
             }
         }
 }

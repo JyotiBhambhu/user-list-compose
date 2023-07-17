@@ -53,6 +53,8 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 
     //Compose
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:$versions.lifecycle"
+    implementation "androidx.compose.material:material-icons-extended:$versions.compose_ui_version"
     implementation "androidx.compose.material3:material3:$versions.material3Compose"
 
     //Compose Navigation
