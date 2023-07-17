@@ -38,10 +38,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jyoti.auth.R
 import com.jyoti.auth.login.ui.redux.LoginIntent
+import com.jyoti.auth.util.AUTH_EMAIL_INPUT
+import com.jyoti.auth.util.AUTH_PASSWORD_INPUT
 import com.jyoti.auth.util.CLEAR_TEXT
 import com.jyoti.auth.util.HIDE_PASSWORD
-import com.jyoti.auth.util.LOGIN_EMAIL_INPUT
-import com.jyoti.auth.util.LOGIN_PASSWORD_INPUT
 import com.jyoti.auth.util.SHOW_PASSWORD
 import com.jyoti.core.base.LoadState
 import com.jyoti.core.util.toEvent
@@ -142,7 +142,7 @@ fun LoginInputFields(
     val focusManager = LocalFocusManager.current
 
     InputField(
-        testTag = LOGIN_EMAIL_INPUT,
+        testTag = AUTH_EMAIL_INPUT,
         value = email,
         label = R.string.email,
         onValueChanged = {
@@ -170,7 +170,7 @@ fun LoginInputFields(
         ),
     )
     InputField(
-        testTag = LOGIN_PASSWORD_INPUT,
+        testTag = AUTH_PASSWORD_INPUT,
         value = password,
         label = R.string.password,
         onValueChanged = {

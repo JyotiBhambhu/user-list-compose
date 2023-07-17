@@ -41,6 +41,7 @@ fun UserAppNavHost(
         )
         signUpScreen(
             navigateUp = navController::popBackStack,
+            showSnackBar = showSnackBar
         )
         contactsGraph {
             addContactScreen(navigateUp = navController::popBackStack, showSnackBar)

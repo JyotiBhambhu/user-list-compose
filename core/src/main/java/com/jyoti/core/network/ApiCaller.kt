@@ -1,6 +1,7 @@
 package com.jyoti.core.network
 
 import com.jyoti.core.base.BaseResponseModel
+import com.jyoti.core.network.ErrorUtils.parseError
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -32,7 +33,8 @@ class ApiCaller @Inject constructor() {
                     }
                 }
                 false -> {
-                    return SealedResult.Unknown
+                    val apiError = parseError(response)
+                    return apiError.error?.let { SealedResult.Error(it) } ?: SealedResult.Unknown
                 }
             }
         } catch (exception: Exception) {
