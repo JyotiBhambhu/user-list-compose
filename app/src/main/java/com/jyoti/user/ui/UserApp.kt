@@ -22,7 +22,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
-import com.jyoti.core.network.NetworkMonitor
+import com.jyoti.core.networkMonitor.NetworkMonitor
 import com.jyoti.designsystem.component.UserAppFAB
 import com.jyoti.designsystem.component.UserTopAppBar
 import com.jyoti.designsystem.icon.UserAppIcons

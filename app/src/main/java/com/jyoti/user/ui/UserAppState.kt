@@ -10,7 +10,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.jyoti.core.network.NetworkMonitor
+import com.jyoti.core.networkMonitor.NetworkMonitor
 import com.jyoti.user.contacts.addcontact.navigation.navigateToAddContactScreen
 import com.jyoti.user.contacts.contactlist.navigation.contactsNavigationRoute
 import com.jyoti.user.navigation.TopLevelDestination
