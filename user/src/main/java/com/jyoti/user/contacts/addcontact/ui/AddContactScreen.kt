@@ -9,6 +9,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.Text
@@ -33,11 +34,14 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jyoti.core.base.LoadState
 import com.jyoti.core.util.toEvent
 import com.jyoti.designsystem.component.InputField
+import com.jyoti.designsystem.component.UserTopAppBar
+import com.jyoti.designsystem.icon.UserAppIcons
 import com.jyoti.user.R
 import com.jyoti.user.contacts.addcontact.ui.redux.AddContactIntent
 import com.jyoti.user.contacts.utils.CLEAR_TEXT
 import com.jyoti.core.R as CoreR
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun AddContactRoute(
     viewModel: AddContactViewModel = hiltViewModel(),
@@ -62,19 +66,29 @@ internal fun AddContactRoute(
         }
     })
 
-    Column(
-        modifier = Modifier.padding(all = 16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        AddUserScreen(
-            nameError = state.nameError,
-            jobError = state.jobError,
-            onAddUserClicked = { name, job ->
-                viewModel.onIntent(AddContactIntent.CreateUser(name, job))
-            }
-        )
+    Column {
+        UserTopAppBar(
+            titleRes = R.string.add_new_contact,
+            navigationIcon = UserAppIcons.BACK,
+            navigationIconContentDescription = stringResource(id = R.string.add_new_contact)
+        ){
+            navigateUp()
+        }
+        Column(
+            modifier = Modifier.padding(all = 16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            AddUserScreen(
+                nameError = state.nameError,
+                jobError = state.jobError,
+                onAddUserClicked = { name, job ->
+                    viewModel.onIntent(AddContactIntent.CreateUser(name, job))
+                }
+            )
+        }
     }
+
 }
 
 @Composable
