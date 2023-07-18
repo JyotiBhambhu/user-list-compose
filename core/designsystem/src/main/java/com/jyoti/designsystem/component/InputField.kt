@@ -14,7 +14,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 
 @Composable
 fun InputField(
-    testTag: String,
+    testTag: String = "",
     value: String,
     @StringRes label: Int,
     error: String,

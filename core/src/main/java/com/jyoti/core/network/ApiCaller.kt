@@ -22,7 +22,7 @@ class ApiCaller @Inject constructor() {
                 true -> {
                     if (response.code() == StatusCode.SC_NO_CONTENT.code) {
                         SealedResult.Ignore
-                    } else if (response.code() == StatusCode.SC_SUCCESS.code) {
+                    } else if (response.code() == StatusCode.SC_SUCCESS.code || response.code() == StatusCode.SC_SUCCESS_CREATED.code) {
                         SealedResult.Response(response.body())
                     } else {
                         response.body()?.error?.let {

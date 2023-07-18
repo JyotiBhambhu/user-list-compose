@@ -32,7 +32,6 @@ class SignUpViewModel @Inject constructor(
         password: String,
     ) {
         viewModelScope.launch(mainDispatcher) {
-            signUpUseCase(email, password)
             when (val sealedResult = signUpUseCase(email, password).first()) {
                 is SealedResult.Error -> handle(SignUpReduceAction.SignUpError(sealedResult.error))
                 is SealedResult.Response -> handle(

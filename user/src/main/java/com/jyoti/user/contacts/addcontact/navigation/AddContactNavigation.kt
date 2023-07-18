@@ -18,6 +18,6 @@ fun NavGraphBuilder.addContactScreen(
     showSnackBar: (message: String, duration: SnackbarDuration) -> Unit
 ) {
     composable(route = addContactNavigationRoute) {
-        AddContactRoute(navigateUp = navigateUp, showSnackBar)
+        AddContactRoute(navigateUp = navigateUp, showSnackBar = showSnackBar)
     }
 }

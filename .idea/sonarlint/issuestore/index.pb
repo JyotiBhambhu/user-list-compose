@@ -26,12 +26,8 @@ b
 2auth/src/main/java/com/jyoti/auth/di/AuthModule.kt,e/6/e682e83c94524605a092e24869e3259ceb3aa3fb
 p
 @auth/src/main/java/com/jyoti/auth/data/model/AuthRequestModel.kt,6/4/64defd93267b5d116db821dfba742cfb324bba06
-q
-Aauth/src/main/java/com/jyoti/auth/data/model/AuthResponseModel.kt,2/8/28b8330b78b80bf85d6b90325b77ea5887a7111a
 d
 4core/src/main/java/com/jyoti/core/base/BaseMapper.kt,1/c/1c30e082da624e350df062605e08e2e0e46bc2e6
-k
-;core/src/main/java/com/jyoti/core/base/BaseResponseModel.kt,e/d/ed4b8ad4c373813482817a24f4a5cb3162479c9b
 A
 core/build.gradle,9/1/918ca359602392354123b7d3b63264baf7ea9dde
 …
@@ -70,7 +66,5 @@ Jcore/src/main/java/com/jyoti/core/data/data_source/TokenLocalDataSource.kt,9/1
 .app/src/main/java/com/jyoti/user/ui/UserApp.kt,5/6/56e14ba2fcadc0c4c7f299ad777e1dc109a71630
 c
 3app/src/main/java/com/jyoti/user/ui/UserAppState.kt,7/9/794c778a768461dba5459a398fc0aeb18a20a925
-g
-7core/src/main/java/com/jyoti/core/network/StatusCode.kt,2/3/23f305d3a191f38292e20042d89ded8a9ffa3bce
 T
 $auth/src/main/res/values/strings.xml,5/5/55da1c49111bd63012833f4e247055d35118a559

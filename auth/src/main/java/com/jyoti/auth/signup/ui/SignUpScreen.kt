@@ -47,6 +47,7 @@ import com.jyoti.auth.util.SHOW_PASSWORD
 import com.jyoti.core.base.LoadState
 import com.jyoti.core.util.toEvent
 import com.jyoti.designsystem.component.InputField
+import com.jyoti.core.R as CoreR
 
 /**
  * This screens UI is quite redundant as we have only 2 fields similar to login screen,
@@ -67,7 +68,7 @@ fun SignUpRoute(
         }
     })
 
-    val genericError = stringResource(id = R.string.something_went_wrong)
+    val genericError = stringResource(id = CoreR.string.something_went_wrong)
     LaunchedEffect(key1 = state.loadState, block = {
         if (state.loadState == LoadState.ERROR) {
             val message = state.signUpError.ifEmpty { genericError }
