@@ -3,6 +3,7 @@ package com.jyoti.designsystem.icon
 import androidx.annotation.DrawableRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Call
 import androidx.compose.material.icons.rounded.Clear
 import androidx.compose.material.icons.rounded.Menu
@@ -19,6 +20,7 @@ object UserAppIcons {
     val EYE = Icons.Rounded.Visibility
     val EYE_OFF = Icons.Rounded.VisibilityOff
     val CLEAR = Icons.Rounded.Clear
+    val BACK = Icons.Rounded.ArrowBack
 }
 
 /**
