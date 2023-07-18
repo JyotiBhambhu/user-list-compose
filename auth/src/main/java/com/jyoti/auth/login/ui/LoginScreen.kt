@@ -6,10 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -46,6 +42,7 @@ import com.jyoti.auth.util.SHOW_PASSWORD
 import com.jyoti.core.base.LoadState
 import com.jyoti.core.util.toEvent
 import com.jyoti.designsystem.component.InputField
+import com.jyoti.designsystem.icon.UserAppIcons
 import com.jyoti.core.R as CoreR
 
 @Composable
@@ -95,18 +92,27 @@ fun LoginScreen(
     onLoginClicked: (String, String) -> Unit,
     onSignUpClicked: () -> Unit
 ) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var email by remember {
+        mutableStateOf("eve.holt@reqres.in")
+    }
+    var password by remember {
+        mutableStateOf("cityslicka")
+    }
 
     LoginInputFields(
         emailError = if(emailError) stringResource(id = R.string.invalid_email) else "",
         passwordError = if(passwordError) stringResource(id = R.string.invalid_password) else "",
+        email = email,
+        password = password,
         onEmailChanged = {
             email = it
         },
         onPasswordChanged = {
             password = it
-        }
+        },
+        clearEmail = {
+            email = ""
+        },
     ) {
         onLoginClicked(email, password)
     }
@@ -124,19 +130,15 @@ fun LoginScreen(
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginInputFields(
+    email: String,
+    password: String,
     emailError: String,
     passwordError: String,
     onEmailChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
+    clearEmail: () -> Unit,
     onDone: () -> Unit
 ) {
-
-    var email by remember {
-        mutableStateOf("")
-    }
-    var password by remember {
-        mutableStateOf("")
-    }
 
     var isPasswordVisible: Boolean by rememberSaveable { mutableStateOf(false) }
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -147,16 +149,15 @@ fun LoginInputFields(
         value = email,
         label = R.string.email,
         onValueChanged = {
-            email = it
             onEmailChanged(it)
         },
         trailingIcon = {
             Icon(
-                Icons.Filled.Clear,
+                UserAppIcons.CLEAR,
                 contentDescription = CLEAR_TEXT,
                 modifier = Modifier
                     .clickable {
-                        email = ""
+                        clearEmail()
                     }
             )
         },
@@ -175,12 +176,11 @@ fun LoginInputFields(
         value = password,
         label = R.string.password,
         onValueChanged = {
-            password = it
             onPasswordChanged(it)
         },
         trailingIcon = {
             val image =
-                if (isPasswordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                if (isPasswordVisible) UserAppIcons.EYE else UserAppIcons.EYE_OFF
             val description =
                 if (isPasswordVisible) HIDE_PASSWORD else SHOW_PASSWORD
             IconButton(onClick = { isPasswordVisible = !isPasswordVisible }) {

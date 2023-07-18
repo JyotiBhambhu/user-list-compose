@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AddContactsViewModel @Inject constructor(
+class AddContactViewModel @Inject constructor(
     private val addContactUseCase: AddContactUseCase,
     @DispatcherModule.MainDispatcher private val mainDispatcher: CoroutineDispatcher
 ) :
@@ -45,7 +45,7 @@ class AddContactsViewModel @Inject constructor(
 
     override fun executeIntent(mviIntent: AddContactIntent) {
         when (mviIntent) {
-            is AddContactIntent.createUser -> {
+            is AddContactIntent.CreateUser -> {
 
                 handle(AddContactReduceAction.NameError(!mviIntent.name.isValidText()))
                 handle(AddContactReduceAction.JobError(!mviIntent.job.isValidText()))

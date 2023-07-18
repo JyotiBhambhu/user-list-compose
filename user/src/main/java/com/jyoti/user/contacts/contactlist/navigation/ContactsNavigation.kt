@@ -1,5 +1,6 @@
 package com.jyoti.user.contacts.contactlist.navigation
 
+import androidx.compose.material3.SnackbarDuration
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
@@ -15,6 +16,7 @@ fun NavController.navigateToContactsGraph(navOptions: NavOptions? = null) {
 }
 
 fun NavGraphBuilder.contactsGraph(
+    showSnackBar: (message: String, duration: SnackbarDuration) -> Unit,
     nestedGraphs: NavGraphBuilder.() -> Unit,
 ) {
     navigation(
@@ -22,7 +24,7 @@ fun NavGraphBuilder.contactsGraph(
         startDestination = contactsNavigationRoute,
     ) {
         composable(route = contactsNavigationRoute) {
-            ContactsRoute()
+            ContactsRoute(showSnackBar = showSnackBar)
         }
         nestedGraphs()
     }

@@ -6,10 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -47,6 +43,7 @@ import com.jyoti.auth.util.SHOW_PASSWORD
 import com.jyoti.core.base.LoadState
 import com.jyoti.core.util.toEvent
 import com.jyoti.designsystem.component.InputField
+import com.jyoti.designsystem.icon.UserAppIcons
 import com.jyoti.core.R as CoreR
 
 /**
@@ -164,7 +161,7 @@ fun SignUpInputFields(
         },
         trailingIcon = {
             Icon(
-                Icons.Filled.Clear,
+                UserAppIcons.CLEAR,
                 contentDescription = CLEAR_TEXT,
                 modifier = Modifier
                     .clickable {
@@ -192,7 +189,7 @@ fun SignUpInputFields(
         },
         trailingIcon = {
             val image =
-                if (isPasswordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                if (isPasswordVisible) UserAppIcons.EYE else UserAppIcons.EYE_OFF
             val description =
                 if (isPasswordVisible) HIDE_PASSWORD else SHOW_PASSWORD
             IconButton(onClick = { isPasswordVisible = !isPasswordVisible }) {
@@ -221,7 +218,7 @@ fun SignUpInputFields(
         },
         trailingIcon = {
             val image =
-                if (isConfirmPasswordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                if (isConfirmPasswordVisible) UserAppIcons.EYE else UserAppIcons.EYE_OFF
             val description =
                 if (isConfirmPasswordVisible) HIDE_PASSWORD else SHOW_PASSWORD
             IconButton(onClick = { isConfirmPasswordVisible = !isConfirmPasswordVisible }) {

@@ -40,7 +40,7 @@ import com.jyoti.core.R as CoreR
 
 @Composable
 internal fun AddContactRoute(
-    viewModel: AddContactsViewModel = hiltViewModel(),
+    viewModel: AddContactViewModel = hiltViewModel(),
     navigateUp: () -> Unit,
     showSnackBar: (message: String, duration: SnackbarDuration) -> Unit
 ) {
@@ -71,7 +71,7 @@ internal fun AddContactRoute(
             nameError = state.nameError,
             jobError = state.jobError,
             onAddUserClicked = { name, job ->
-                viewModel.onIntent(AddContactIntent.createUser(name, job))
+                viewModel.onIntent(AddContactIntent.CreateUser(name, job))
             }
         )
     }

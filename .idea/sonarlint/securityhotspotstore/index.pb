@@ -10,16 +10,8 @@ P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 }
 Mcore/designsystem/src/main/java/com/jyoti/designsystem/component/TopAppBar.kt,4/6/46a1c96d6ca648165c39b8321a483de560ea3acd
-u
-Ecore/designsystem/src/main/java/com/jyoti/designsystem/theme/Color.kt,f/5/f593c643d25a87bf8d7e98e7fba8efc16d30c1cb
 w
 Gcore/designsystem/src/main/java/com/jyoti/designsystem/component/FAB.kt,4/1/41004790677ba75e65b63b155a3749c9f4feaf5e
-{
-Kuser/src/main/java/com/jyoti/user/contacts/contactlist/ui/ContactsScreen.kt,7/9/79abfd46bf7917641eb7b292282a91e789adbf9d
-‡
-Wuser/src/main/java/com/jyoti/user/contacts/contactlist/navigation/ContactsNavigation.kt,8/9/8999a4d99b4ff2a73b7417e66a589d99942ae5bc
-@
-app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 m
 =core/src/main/java/com/jyoti/core/extensions/FlowExtension.kt,2/3/23f804e22ea5edba4e5441eefe3ad6b94f15066c
 p
@@ -46,8 +38,6 @@ i
 9core/src/main/java/com/jyoti/core/network/SealedResult.kt,6/8/6873e566ce0936825d749814b757dd6cfd4e455d
 z
 Jcore/src/main/java/com/jyoti/core/data/data_source/TokenLocalDataSource.kt,9/1/915377bc2a0a379bb04d070d9f882b5ac2ee8c71
-A
-core/build.gradle,9/1/918ca359602392354123b7d3b63264baf7ea9dde
 Q
 !core/src/main/AndroidManifest.xml,a/e/ae00e14a93cb05cbe86f462a3bad74d51f6b1afc
 c
