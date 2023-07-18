@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -38,11 +40,25 @@ android {
 
 dependencies {
 
+    implementation project(':core')
+    implementation project(':core:designsystem')
+
+    // dagger
+    implementation "com.google.dagger:hilt-android:$versions.daggerHiltAndroid"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.daggerHiltAndroid"
+
+    // network
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.google.code.gson:gson:$versions.gson"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+
     //Compose
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:$versions.lifecycle"
     implementation "androidx.compose.material3:material3:$versions.material3Compose"
 
     //Compose Navigation
     implementation "androidx.navigation:navigation-compose:$versions.composeNav"
+    implementation "androidx.hilt:hilt-navigation-compose:$versions.composeHiltNav"
 
     //Preview
     implementation "androidx.compose.ui:ui-tooling:$versions.compose_ui_version"

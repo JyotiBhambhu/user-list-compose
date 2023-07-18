@@ -1,3 +1,9 @@
 <resources>
     <string name="contacts">Contacts</string>
+    <string name="name">Name</string>
+    <string name="job">Job</string>
+    <string name="add_user">Add User</string>
+    <string name="invalid_name">Invalid Name</string>
+    <string name="invalid_job">Invalid Job</string>
+    <string name="user_added">%1s is added</string>
 </resources>

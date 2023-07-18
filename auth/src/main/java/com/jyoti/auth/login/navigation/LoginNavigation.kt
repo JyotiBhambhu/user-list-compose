@@ -1,5 +1,6 @@
 package com.jyoti.auth.login.navigation
 
+import androidx.compose.material3.SnackbarDuration
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -15,12 +16,14 @@ fun NavController.navigateToLogin() {
 
 fun NavGraphBuilder.loginScreen(
     navigateToHome: () -> Unit,
-    onSignUpClicked: () -> Unit
+    onSignUpClicked: () -> Unit,
+    showSnackBar: (message: String, duration: SnackbarDuration) -> Unit
 ) {
     composable(route = loginNavigationRoute) {
         LoginRoute(
             navigateToHome = navigateToHome,
-            onSignUpClicked = onSignUpClicked
+            onSignUpClicked = onSignUpClicked,
+            showSnackBar = showSnackBar
         )
     }
 }

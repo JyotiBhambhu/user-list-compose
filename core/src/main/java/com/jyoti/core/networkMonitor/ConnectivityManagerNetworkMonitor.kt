@@ -1,4 +1,4 @@
-package com.jyoti.core.network
+package com.jyoti.core.networkMonitor
 
 import android.content.Context
 import android.net.ConnectivityManager

@@ -1,7 +1,7 @@
 package com.jyoti.core.di
 
-import com.jyoti.core.network.ConnectivityManagerNetworkMonitor
-import com.jyoti.core.network.NetworkMonitor
+import com.jyoti.core.networkMonitor.ConnectivityManagerNetworkMonitor
+import com.jyoti.core.networkMonitor.NetworkMonitor
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,4 +14,5 @@ interface DataModule {
     fun bindsNetworkMonitor(
         networkMonitor: ConnectivityManagerNetworkMonitor,
     ): NetworkMonitor
+
 }

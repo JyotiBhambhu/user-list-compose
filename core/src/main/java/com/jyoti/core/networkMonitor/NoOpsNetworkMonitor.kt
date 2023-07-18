@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jyoti.core.network
+package com.jyoti.core.networkMonitor
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf

@@ -5,8 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.jyoti.core.network.NetworkMonitor
-import com.jyoti.core.network.NoOpsNetworkMonitor
+import com.jyoti.core.networkMonitor.NetworkMonitor
+import com.jyoti.core.networkMonitor.NoOpsNetworkMonitor
 import com.jyoti.designsystem.theme.MyApplicationTheme
 import com.jyoti.user.ui.UserApp
 import dagger.hilt.android.AndroidEntryPoint
