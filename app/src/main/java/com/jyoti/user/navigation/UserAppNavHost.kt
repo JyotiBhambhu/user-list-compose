@@ -19,7 +19,7 @@ fun UserAppNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
     startDestination: String = loginNavigationRoute,
-    showSnackBar: (message: String, duration: SnackbarDuration) -> Unit
+    showSnackBar: (message: String, duration: SnackbarDuration) -> Unit = { _: String, _: SnackbarDuration -> }
 ) {
     NavHost(
         navController = navController,

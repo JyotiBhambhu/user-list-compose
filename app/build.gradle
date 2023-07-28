@@ -16,7 +16,7 @@ android {
         versionCode config.versionCode
         versionName config.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.jyoti.user.testrunner.CustomTestRunner"
         vectorDrawables {
             useSupportLibrary true
         }
@@ -75,6 +75,13 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$versions.compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$versions.compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$versions.compose_ui_version"
+
+    //Navigation Testing
+    androidTestImplementation "androidx.navigation:navigation-testing:2.6.0"
+
+    // dagger hilt test
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$versions.daggerHiltAndroid"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$versions.daggerHiltAndroid"
 
 
 }

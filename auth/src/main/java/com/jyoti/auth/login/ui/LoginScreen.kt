@@ -3,10 +3,12 @@ package com.jyoti.auth.login.ui
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.SnackbarDuration
@@ -24,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -38,7 +41,11 @@ import com.jyoti.auth.util.AUTH_EMAIL_INPUT
 import com.jyoti.auth.util.AUTH_PASSWORD_INPUT
 import com.jyoti.auth.util.CLEAR_TEXT
 import com.jyoti.auth.util.HIDE_PASSWORD
+import com.jyoti.auth.util.LOGIN_BUTTON
+import com.jyoti.auth.util.LOGIN_SCREEN_ROOT
+import com.jyoti.auth.util.PROGRESS_BAR
 import com.jyoti.auth.util.SHOW_PASSWORD
+import com.jyoti.auth.util.SIGN_UP_BUTTON
 import com.jyoti.core.base.LoadState
 import com.jyoti.core.util.toEvent
 import com.jyoti.designsystem.component.InputField
@@ -70,18 +77,25 @@ fun LoginRoute(
     })
 
     Column(
-        modifier = Modifier.padding(all = 16.dp),
+        modifier = Modifier.fillMaxSize()
+            .testTag(LOGIN_SCREEN_ROOT)
+            .padding(all = 16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        LoginScreen(
-            emailError = state.emailError,
-            passwordError = state.passwordError,
-            onLoginClicked = { username, password ->
-                viewModel.onIntent(LoginIntent.DoLogin(username, password))
-            },
-            onSignUpClicked
-        )
+        if(state.loadState == LoadState.LOADING){
+            CircularProgressIndicator(modifier = Modifier.testTag(PROGRESS_BAR))
+        }else{
+            LoginScreen(
+                emailError = state.emailError,
+                passwordError = state.passwordError,
+                onLoginClicked = { username, password ->
+                    viewModel.onIntent(LoginIntent.DoLogin(username, password))
+                },
+                onSignUpClicked
+            )
+        }
+
     }
 }
 
@@ -116,13 +130,13 @@ fun LoginScreen(
     ) {
         onLoginClicked(email, password)
     }
-    Button(onClick = {
+    Button(modifier = Modifier.testTag(LOGIN_BUTTON), onClick = {
         onLoginClicked(email, password)
     }) {
         Text(text = stringResource(id = R.string.login))
     }
 
-    Button(onClick = onSignUpClicked) {
+    Button(modifier = Modifier.testTag(SIGN_UP_BUTTON), onClick = onSignUpClicked) {
         Text(text = stringResource(id = R.string.signup))
     }
 }
